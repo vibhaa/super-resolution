@@ -1,0 +1,14 @@
+dataset_params:
+  root_dir: /video-conf/scratch/pantea/fom_personalized_1024
+  frame_shape: [1024, 1024, 3]
+
+checkpoint_params:
+    checkpoint_path: '/video-conf/scratch/pantea_experiments_tardy/super-resolution-weights/edsr-weights/edsr-16-x4/weights.h5'
+
+model_params:
+  generator_params:
+    generator_type: 'super_resolution'
+    depth: 16
+    downgrade: 'bicubic'
+    use_lr_video: True
+    lr_size: 256
