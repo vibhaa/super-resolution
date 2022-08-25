@@ -24,7 +24,6 @@ class SuperResolutionModel():
             config = yaml.safe_load(f)
 
         # config parameters
-        self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
         generator_params = config['model_params']['generator_params']
         self.shape = config['dataset_params']['frame_shape']
         self.use_lr_video = generator_params.get('use_lr_video', True)
@@ -40,14 +39,8 @@ class SuperResolutionModel():
             checkpoint = config['checkpoint_params']['checkpoint_path']
         self.generator.load_weights(checkpoint)
 
-        # set to test mode
-        self.generator.eval()
-
         timing_enabled = True
         self.times = []
-        self.start = torch.cuda.Event(enable_timing=timing_enabled)
-        self.end = torch.cuda.Event(enable_timing=timing_enabled)
-
 
     def get_shape(self):
         return tuple(self.shape)
