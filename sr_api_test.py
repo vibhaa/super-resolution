@@ -134,8 +134,7 @@ metrics_report += f'\nPSNR: {psnr}, SSIM: {ssim}, SSIM_DB: {ssim_db}, LPIPS: {lp
     f'Reconstruction loss: {np.mean(loss_list)}\n'
 
 if timing_enabled:
-    metrics_report += f'update source: {np.average(update_source_times)}, ' +\
-    f'generator: {np.average(generator_times)}'
+    metrics_report += f'generator: {np.average(generator_times)}'
 
 write_in_file(metrics_file, metrics_report)
 metrics_file.close()
